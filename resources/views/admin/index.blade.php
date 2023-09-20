@@ -207,14 +207,13 @@
             <li><a href="/">Accueil</a></li>
             <li><a href="#">À Propos</a></li>
             <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="/contactProprietaire">Contact</a></li>
         </ul>
         <div class="search-bar" style="background-color: white;">
             <input type="text" placeholder="Rechercher...">
             <button type="submit">Rechercher</button>
         </div>
     </div>
-
     <div class="container">
         <div class="mt-5">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">

@@ -22,7 +22,7 @@
         <li><a href="/">Accueil</a></li>
         <li><a href="#">À Propos</a></li>
         <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="/contactProprietaire">Contact</a></li>
     </ul>
     <div class="search-bar">
         <!-- Barre de recherche ici -->

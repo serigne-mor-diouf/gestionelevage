@@ -141,7 +141,7 @@
 </body>
 </html>
  -->
-@extends('base.layout')
+ @extends('base.layout')
 @section('content')
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <script src="{{ asset('js/app.js') }}"></script>
@@ -156,13 +156,13 @@
             </div>
         @endif
         <div class="flex justify-between mb-4 logout-button">
-                    <form action="{{ route('proprietaire.accueil') }}" method="get">
-                        @csrf
-                        <button type="submit" class="btn btn-danger">
-                            <i class="fas fa-sign-out-alt"></i> Retour
-                        </button>
-                    </form>
-                </div>
+            <form action="{{ route('proprietaire.accueil') }}" method="get">
+                @csrf
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-sign-out-alt"></i> Retour
+                </button>
+            </form>
+        </div>
         <form action="{{ route('mouton.index') }}" method="GET" class="w-50">
             <div class="input-group mb-3">
                 <input type="text" name="search" value="{{ $search }}" class="form-control" placeholder="Rechercher" aria-label="Rechercher" aria-describedby="button-rechercher">
@@ -174,7 +174,7 @@
             <a href="{{ route('mouton.creer') }}" class="text-white" style="text-decoration: none;">Nouveaux mouton </a>
         </button>
     </div>
-    
+
     @if($moutons->isEmpty())
     <div class="d-flex justify-content-center align-items-center p-4">
         <img src="{{ asset('MYPHOTO/empty.svg') }}" alt="" class="empty" style="width: 70px;">
@@ -188,7 +188,15 @@
             <img src="{{ asset('MYPHOTO/'.$mouton->photo) }}" alt="{{ $mouton->nom }}" class="mx-auto d-block">
             <h2>{{ $mouton->nom }}</h2>
             <p>{{ $mouton->description }}</p>
-            <a href="{{ route('mouton.details', ['id' => $mouton->id]) }}" class="details-link">Détails</a>
+            <div class="action-buttons">
+                <a href="{{ route('mouton.details', ['id' => $mouton->id]) }}" class="btn btn-primary details-button">Détails</a>
+                <a href="{{ route('mouton.edit', ['id' => $mouton->id]) }}" class="btn btn-primary edit-button">Modifier</a>
+                <form action="{{ route('mouton.delete', ['id' => $mouton->id]) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?') ">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger delete-button">Supprimer</button>
+                </form>
+            </div>
         </div>
         @php $count++; @endphp
         @if($count % 3 == 0)
@@ -203,7 +211,6 @@
 
 </div>
 @endsection
-
 
 <style>
 /* Ajoutez ces styles dans votre fichier CSS */
@@ -230,8 +237,8 @@
 img {
     max-width: 110%;
     height: auto;
-    transition: 0.5s;
-    transform: rotate();
+    /* transition: 0.5s; */
+    /* transform: rotate(); */
 }
 
 .details-link {
@@ -239,7 +246,7 @@ img {
     margin-top: 10px;
     text-decoration: none;
     color: #007bff;
-    transition: color 0.3s ease;
+    /* transition: color 0.3s ease; */
 }
 
 .details-link:hover {
@@ -247,6 +254,44 @@ img {
     padding: 20px;
 }
 
+/* Ajoutez ces styles dans votre fichier CSS */
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.image-container {
+    border: 2px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: calc(33.33% - 20px);
+    text-align: center;
+}
+
+.clear {
+    clear: both;
+}
+
+img {
+    max-width: 110%;
+    height: auto;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    height: 40px;
+}
+
+.details-button,
+.edit-button,
+.delete-button {
+    flex: 1;
+    margin: 0 5px;
+}
 
 </style>
 

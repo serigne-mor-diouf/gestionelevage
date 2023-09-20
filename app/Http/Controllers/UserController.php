@@ -159,17 +159,17 @@ class UserController extends Controller
        
     }
 
-    // // Assurez-vous d'importer la classe Mouton
-    // public function mesMoutons()
-    // {
-    //     // Obtenez l'utilisateur connecté
-    //     $user = auth()->user();
+    // Assurez-vous d'importer la classe Mouton
+    public function mesMoutons()
+    {
+        // Obtenez l'utilisateur connecté
+        $user = auth()->user();
     
-    //     // Utilisez la relation pour récupérer les moutons du propriétaire connecté
-    //     $moutons = $user->proprietaire->moutons;
+        // Utilisez la relation pour récupérer les moutons du propriétaire connecté
+        $moutons = $user->proprietaire->moutons;
     
-    //     return view('proprietaires.accueil', compact('moutons'));
-    // }
+        return view('proprietaires.accueil', compact('moutons'));
+    }
     
     public function toggleStatut($userId)
     {

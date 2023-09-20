@@ -137,7 +137,7 @@
                     <a href="{{ route('listemesMoutons') }}">
                         <span style="margin-right: 15px;">📋</span> Mes moutons
                     </a>
-                    <a href="{{ route('mouton.index') }}">
+                    <a href="{{ route('listemesMoutons') }}">
                         <span style="margin-right: 15px;">📋</span> Listes
                     </a>
                     <a href="{{ route('login') }}">
