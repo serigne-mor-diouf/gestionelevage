@@ -126,7 +126,7 @@ class MoutonController extends Controller
         // Valider les données du formulaire
         $validatedData = $request->validate([
             'nom' => 'required',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Vous pouvez rendre la photo facultative
+            'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Photo facultative
             'nomMere' => 'required',
             'nomgrandMereMaternelle' => 'required',
             'nomArrieregrandMereMaternelle' => 'required',
@@ -137,24 +137,24 @@ class MoutonController extends Controller
         // Trouver le mouton à mettre à jour
         $mouton = Mouton::findOrFail($id);
     
-      
         // Vérifier si une nouvelle photo a été téléchargée
         if ($request->hasFile('photo')) {
             // Supprimer l'ancienne photo si elle existe
-            if (Storage::disk('public')->exists($mouton->photo)) {
-                Storage::disk('public')->delete($mouton->photo);
+            if (file_exists(storage_path('app/public/' . $mouton->photo))) {
+                unlink(storage_path('app/public/' . $mouton->photo));
             }
     
-            // Stocker la nouvelle photo
-            $photoPath = $request->file('photo')->store('MYPHOTO', 'public');
-            $mouton->photo = $photoPath;
+            // Stocker la nouvelle photo avec un nom personnalisé
+            $photoPath = $request->file('photo')->storeAs('public/MYPHOTO', $request->file('photo')->getClientOriginalName());
+            $mouton->photo = str_replace('public/', '', $photoPath); // Stocker le chemin relatif
         }
     
-        // Enregistrer les modifications dans la base de données
+        // Mettre à jour les données du mouton
         $mouton->update($validatedData);
     
         return redirect('/index')->with('success', 'Mouton mis à jour avec succès');
     }
+    
     
     /**
      * Remove the specified resource from storage.
@@ -170,4 +170,20 @@ class MoutonController extends Controller
     public function accueil(){
         return view('accueils.accueil') ;
     }
+    
+
+    public function indexlistclient(Request $request){
+        
+        $search = $request->input('search', '');
+    
+        if (!empty($search)) {
+            $moutons = Mouton::where('nom', 'like', '%' . $search . '%')
+                ->orWhere('id', 'like', '%' . $search . '%')
+                ->simplePaginate(3);
+        } else {
+            $moutons = Mouton::simplePaginate(3);
+        }
+        return view('moutons.indexlist', ['moutons' => $moutons, 'search' => $search]) ;
+    }
+
 }

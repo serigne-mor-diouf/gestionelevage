@@ -22,7 +22,7 @@
         <li><a href="/">Accueil</a></li>
         <li><a href="#">À Propos</a></li>
         <li><a href="#">Services</a></li>
-        <li><a href="/contactProprietaire">Contact</a></li>
+        <li><a href="/contactProprietaire">Nous Contactez</a></li>
     </ul>
     <div class="search-bar">
         <!-- Barre de recherche ici -->
@@ -45,7 +45,7 @@
             <section class="hero">
             <h1>Bienvenue sur Votre Application Kharbi</h1>
             <p>Découvrez nos services exceptionnels.</p>
-            <a href="#" class="cta-button">En savoir plus</a>
+            <button><a href="/listeclient" class="cta-button" style="background-color: #003366;">Acceder a nos moutons</a></button>
         </section>
             </div>
             <div class="app-image">

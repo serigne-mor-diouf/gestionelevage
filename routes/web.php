@@ -59,6 +59,7 @@ Route::get('/editer/{id}' , [MoutonController::class , 'edit'])->name(('mouton.e
 Route::post('/update/{id}' , [MoutonController::class , 'update'])->name(('mouton.update'));
 Route::delete('delete/{id}' , [MoutonController::class , 'destroy'])->name(('mouton.delete'));
 Route::get('/accueil' , [MoutonController::class , 'accueil'])->name(('mouton.accueil'));
+Route::get('/listeclient' , [MoutonController::class , 'indexlistclient'])->name(('mouton.listeclient'));
 
 
 
@@ -111,7 +112,6 @@ Route::get('/detailsClient/{id}' , [ClientController::class , 'show'])->name(('c
 Route::get('/editerClient/{id}' , [ClientController::class , 'edit'])->name(('client.edit'));
 Route::post('/updateClient/{id}' , [ClientController::class , 'update'])->name(('client.update'));
 Route::delete('deleteClient/{id}' , [ClientController::class , 'destroy'])->name(('client.delete'));
-
 
 
 Route::get('/indexAchat' , [AchatController::class , 'index'])->name('achat.index') ;

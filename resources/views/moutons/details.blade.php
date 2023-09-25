@@ -33,6 +33,7 @@
 
         .navbar .logo img {
             height: 50px; /* Ajuster la hauteur du logo */
+            border-radius: 20px;
         }
 
         .navbar a {
@@ -67,7 +68,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
+            width: 230%;
         }
 
         .card-body {
@@ -75,7 +76,7 @@
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            max-width: 1200px;
+            width: 30%;
             display: flex;
         }
 
@@ -111,7 +112,7 @@
         }
 
         .mouton-image-horizontal {
-            max-width: 200%;
+            width: 130%;
             height: auto;
             border: 1px solid #ccc;
             border-radius: 5px;

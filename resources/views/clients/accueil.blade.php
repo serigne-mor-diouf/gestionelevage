@@ -135,7 +135,7 @@
                         <span style="margin-right: 15px;">👤</span> Ajouter un compte
                     </a>
                     
-                    <a href="/index">
+                    <a href="/listeclient">
                         <span style="margin-right: 15px;">📋</span> Listes
                     </a>
                     <a href="/login">
